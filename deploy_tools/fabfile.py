@@ -4,8 +4,6 @@ import random
 
 REPO_URL = 'https://github.com/schorlem/obeythetestinggoat-superlists.git'
 env.user = "ubuntu"
-env.key_filename = ["add path to key file"]
-env.hosts = ["add url"]
 
 
 def deploy():
