@@ -4,6 +4,7 @@ import random
 
 REPO_URL = 'https://github.com/schorlem/obeythetestinggoat-superlists.git'
 env.user = "ubuntu"
+env.key_filename = ["../../aws-key-als.pem"]
 
 
 def deploy():
