@@ -4,6 +4,8 @@ from fabric.api import env
 
 env.user = "ubuntu"
 env.key_filename = ["../aws-key-als.pem"]
+ 
+
 
 
 def _get_manage_dot_py(host):
@@ -21,3 +23,4 @@ def create_session_on_server(host, email):
     with settings(host_string=f'ubuntu@{host}'):
         session_key = run(f'{manage_dot_py} create_session {email}')
         return session_key.strip()
+

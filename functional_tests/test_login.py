@@ -1,12 +1,12 @@
-from django.core import mail
-from selenium.webdriver.common.keys import Keys
-import re
 import os
 import poplib
 import re
 import time
+from django.core import mail
+from selenium.webdriver.common.keys import Keys
 
 from .base import FunctionalTest
+
 
 SUBJECT = 'Your login link for Superlists'
 
@@ -43,6 +43,7 @@ class LoginTest(FunctionalTest):
                 inbox.dele(email_id)
             inbox.quit()
 
+
     def test_can_get_email_link_to_log_in(self):
         # Edith goes to the awesome superlists site
         # and notices a "Log in" section in the navbar for the first time
@@ -63,6 +64,7 @@ class LoginTest(FunctionalTest):
         ))
 
         # She checks her email and finds a message
+        time.sleep(30)
         body = self.wait_for_email(test_email, SUBJECT)
 
         # It has a url link in it
@@ -72,6 +74,7 @@ class LoginTest(FunctionalTest):
             self.fail(f'Could not find url in email body:\n{body}')
         url = url_search.group(0)
         self.assertIn(self.live_server_url, url)
+        print("URL: ", url)
 
         # she clicks it
         self.browser.get(url)
@@ -82,5 +85,6 @@ class LoginTest(FunctionalTest):
         # Now she logs out
         self.browser.find_element_by_link_text('Log out').click()
 
-        # She is logged out 
+        # She is logged out
         self.wait_to_be_logged_out(email=test_email)
+
