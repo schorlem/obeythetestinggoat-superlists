@@ -22,6 +22,8 @@ eg, on Ubuntu:
 
 * see gunicorn-systemd.template.service
 * replace SITENAME with, e.g., staging.my-domain.com
+* create passwd.txt in home folder that contains the line: EMAIL_PASSWORD=PASSWORD
+* replace PASSWORD in passwd.txt with email password
 
 ## Folder structure:
 Assume we have a user account at /home/username
